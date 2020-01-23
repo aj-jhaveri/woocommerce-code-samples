@@ -36,7 +36,8 @@ class WooCommerce_Modifications_Functionality {
 		function content_after_summary() {  ?>
     		<div style="clear:both;">We can programmatically add some content here, below the summary with the woocommerce_after_single_product_summary action hook.</div>
 		
-		<?php }
+		<?php 
+		}
 		
 		/**
  		* Replace sale flash text with price savings
@@ -46,12 +47,12 @@ class WooCommerce_Modifications_Functionality {
 		
 		function woocommerce_custom_sale_flash( $output_html, $post, $product ) {
 
-    	$regular_price = method_exists( $product, 'get_regular_price' ) ? $product->get_regular_price() : $product->regular_price;
+    		$regular_price = method_exists( $product, 'get_regular_price' ) ? $product->get_regular_price() : $product->regular_price;
 		$sale_price = method_exists( $product, 'get_sale_price' ) ? $product->get_sale_price() : $product->sale_price;
-    	$saved_price = wc_price( $regular_price - $sale_price );
-    	$output_html = '<span class="onsale">' . esc_html__( 'Save', 'woocommerce' ) . ' ' . $saved_price . '</span>';
-    	return $output_html;
-}
+    		$saved_price = wc_price( $regular_price - $sale_price );
+    		$output_html = '<span class="onsale">' . esc_html__( 'Save', 'woocommerce' ) . ' ' . $saved_price . '</span>';
+    		return $output_html;
+		}
 	
 		/**
  		* Rename "home" in breadcrumb
@@ -63,7 +64,7 @@ class WooCommerce_Modifications_Functionality {
 		function wcc_change_breadcrumb_home_text( $defaults ) {
 		$defaults['home'] = 'Slake Store';
 		return $defaults;
-}
+		}
 		
 	}
 
